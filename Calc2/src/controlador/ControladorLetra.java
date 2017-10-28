@@ -18,6 +18,7 @@ public class ControladorLetra implements MouseListener {
         this.caption = pcaption_num;
         this.campo_texto = pcampo_texto;
         this.ultimo_num = ultimo_num;
+        
         acumulador = pacumulador;
         campo_total = pcampo_total;
         
@@ -32,10 +33,15 @@ public class ControladorLetra implements MouseListener {
         
         this.ultimo_num = Double.valueOf(caption); //Este metodo transforma el capuchon del boton "caption" en Double para poder sumarlo.
         
-       // acumulador = ultimo_num;
-        acumulador= Double.parseDouble(campo_texto.getText());//Ver este metodo
-        rst = acumulador + ultimo_num;
-        campo_total.setText(rst.toString());
+        this.acumulador = ultimo_num;
+        this.acumulador = acumulador + ultimo_num;
+        this.acumulador = acumulador - ultimo_num;
+        this.acumulador = acumulador * ultimo_num;
+        this.acumulador = acumulador / ultimo_num;
+        //acumulador = acumulador + ultimo_num;
+       //acumulador= Double.parseDouble(campo_texto.getText());//Ver este metodo
+       // rst = acumulador + ultimo_num;
+        //campo_total.setText(ultimo_num.toString());
     }
 
     @Override

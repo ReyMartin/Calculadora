@@ -26,7 +26,7 @@ public class ControladorOperador implements MouseListener {
         this.acumulador = pacumulador;
         this.ultimo_num = pultimo_num;
         this.ultimo_op = pultimo_op;
-        rst = prst;
+        this.rst = prst;
          
         }
     
@@ -37,23 +37,24 @@ public class ControladorOperador implements MouseListener {
         
         this.ultimo_op = caption_op;
         
-        
-        
-        
-        
-       this.acumulador = ultimo_num ;
-        ultimo_num= acumulador + ultimo_num;
-        
-        //this.rst = acumulador + ultimo_num;
-        //this.rst = acumulador - ultimo_num;
-        //this.rst = acumulador * ultimo_num;
-        //this.rst = acumulador / ultimo_num;
-        
-       //rst=acumulador;
+        /*
+        this.acumulador = acumulador + ultimo_num;
+        this.rst = acumulador - ultimo_num;
+        this.rst = acumulador * ultimo_num;
+        this.rst = acumulador / ultimo_num; */
+        //this.acumulador = acumulador + ultimo_num ;
+       //this.acumulador = Double.parseDouble(campo_texto.getText());
+        //acumulador= acumulador + ultimo_num;
+       //ultimo_num= acumulador + ultimo_num;
        
-        this.campo_total.setText(ultimo_num.toString());
-             
-    
+        if(caption_op.equals("=")){
+            //this.acumulador = acumulador + ultimo_num;
+            //this.rst = acumulador + ultimo_num;
+            
+            this.campo_total.setText(acumulador.toString());
+            //this.rst = acumulador;
+        }
+           
     }
 
     @Override

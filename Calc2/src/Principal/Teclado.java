@@ -17,30 +17,24 @@ public class Teclado extends JFrame {
     private JTextField campo_total = new JTextField();
     private JButton borrar = new JButton("Borrar");
     private JButton borrarc_a_c = new JButton("Borrar c_a_c");
-    
     private String bor_caracteres;
-    
-    private Double acumulador;
-    private Double ultimo_num;
-    private String ultimo_op;
-    private Double rst;
     
     
     public Teclado(){
-        this.acumulador = 0.0; 
-        this.ultimo_num = 0.0;
         this.setLayout(contenedor);
         this.setTitle("Calculadora");
         this.setLocation(200,300);
         this.setSize(800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //hace que el programa se pare cuando se cierra la ventana
 
+        Datos_Calc datosCalc = new Datos_Calc();  //Instanciamos esta clase que contiene las variables para los operadores.
+        
+        
         borrar.addActionListener(new ActionListener(){   //Este boton borrar todo el campo_texto de un solo click.
         public void actionPerformed(ActionEvent e) {
 	campo_texto.setText("");
         }
-    });  
-        
+        });  
         
         borrarc_a_c.addActionListener(new ActionListener(){   //Este boton borrar el campo_texto caracter a caracter.
         public void actionPerformed(ActionEvent e) {
@@ -64,25 +58,27 @@ public class Teclado extends JFrame {
     this.add(campo_total);
     
     
-    this.add(new Letra("0",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("1",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("2",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("3",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("4",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("5",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("6",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("7",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("8",campo_texto, ultimo_num, acumulador, campo_total));
-    this.add(new Letra("9",campo_texto, ultimo_num, acumulador, campo_total));
+    this.add(new Letra("0",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("1",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("2",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("3",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("4",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("5",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("6",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("7",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("8",campo_texto, campo_total, datosCalc));
+    this.add(new Letra("9",campo_texto, campo_total, datosCalc));
     
     
-    this.add(new Operador("+",campo_texto, campo_total, acumulador, ultimo_num, ultimo_op, rst));
-    this.add(new Operador("-",campo_texto, campo_total, acumulador, ultimo_num, ultimo_op, rst));
-    this.add(new Operador("*",campo_texto, campo_total, acumulador, ultimo_num, ultimo_op, rst));
-    this.add(new Operador("/",campo_texto, campo_total, acumulador, ultimo_num, ultimo_op, rst));
+    this.add(new Operador("+",campo_texto, campo_total, datosCalc));
+    this.add(new Operador("-",campo_texto, campo_total, datosCalc));
+    this.add(new Operador("*",campo_texto, campo_total, datosCalc));
+    this.add(new Operador("/",campo_texto, campo_total, datosCalc));
     
-    this.add(new Operador("=",campo_texto, campo_total, acumulador, ultimo_num, ultimo_op, rst));
+    this.add(new Operador("=",campo_texto, campo_total, datosCalc));
     this.setVisible(true);    //Se pone abajo de todo, asi cuando termina de cargar todo lo que se le pide, lo muestra.
     }
+
+    
     
 }

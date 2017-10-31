@@ -1,47 +1,32 @@
 package controlador;
 
+import Principal.Datos_Calc;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JTextField;
-
+//import static Principal.Teclado.ultimo_num;
 
 public class ControladorLetra implements MouseListener {
 
    String caption;
    JTextField campo_texto; 
-   Double ultimo_num;
-   Double acumulador;
    JTextField campo_total;
-   Double rst;
+   //Double rst;
+   Datos_Calc datosCalc;
    
-    public ControladorLetra(String pcaption_num, JTextField pcampo_texto, Double ultimo_num, Double pacumulador, JTextField pcampo_total) {
+    public ControladorLetra(String pcaption_num, JTextField pcampo_texto, JTextField pcampo_total, Datos_Calc pdatosCalc) {
         this.caption = pcaption_num;
         this.campo_texto = pcampo_texto;
-        this.ultimo_num = ultimo_num;
-        
-        acumulador = pacumulador;
         campo_total = pcampo_total;
-        
+        this.datosCalc = pdatosCalc;
     }
-
-    
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        
         this.campo_texto.setText(campo_texto.getText() + caption); //Acumula lo que tiene escrito + lo que entra.
-        
-        this.ultimo_num = Double.valueOf(caption); //Este metodo transforma el capuchon del boton "caption" en Double para poder sumarlo.
-        
-        this.acumulador = ultimo_num;
-        this.acumulador = acumulador + ultimo_num;
-        this.acumulador = acumulador - ultimo_num;
-        this.acumulador = acumulador * ultimo_num;
-        this.acumulador = acumulador / ultimo_num;
-        //acumulador = acumulador + ultimo_num;
-       //acumulador= Double.parseDouble(campo_texto.getText());//Ver este metodo
-       // rst = acumulador + ultimo_num;
-        //campo_total.setText(ultimo_num.toString());
+        datosCalc.setUltimo_num(datosCalc.getUltimo_num() + caption);
+        //ultimo_num = ultimo_num + caption;
+        System.out.println(datosCalc.getUltimo_num());
     }
 
     @Override

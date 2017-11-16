@@ -1,5 +1,6 @@
 package Principal;
 
+import controlador.ControladorGrabar;
 import datos.Operador;
 import datos.Letra;
 import java.awt.GridLayout;
@@ -17,6 +18,10 @@ public class Teclado extends JFrame {
     private JTextField campo_total = new JTextField();
     private JButton borrar = new JButton("Borrar");
     private JButton borrarc_a_c = new JButton("Borrar c_a_c");
+    private JButton grabar = new JButton ("Grabar");
+    ControladorGrabar controladorGrabar = new ControladorGrabar(campo_texto);
+ 
+
     private String bor_caracteres;
     
     
@@ -26,9 +31,9 @@ public class Teclado extends JFrame {
         this.setLocation(200,300);
         this.setSize(800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //hace que el programa se pare cuando se cierra la ventana
-
         Datos_Calc datosCalc = new Datos_Calc();  //Instanciamos esta clase que contiene las variables para los operadores.
         
+         
         
         borrar.addActionListener(new ActionListener(){   //Este boton borrar todo el campo_texto de un solo click.
         public void actionPerformed(ActionEvent e) {
@@ -56,6 +61,8 @@ public class Teclado extends JFrame {
     this.add(campo_texto);
     this.add(new JLabel("Resultado Total"));
     this.add(campo_total);
+    this.add(grabar);
+    this.grabar.addMouseListener(controladorGrabar);
     
     
     this.add(new Letra("0",campo_texto, campo_total, datosCalc));
@@ -77,6 +84,7 @@ public class Teclado extends JFrame {
     
     this.add(new Operador("=",campo_texto, campo_total, datosCalc));
     this.setVisible(true);    //Se pone abajo de todo, asi cuando termina de cargar todo lo que se le pide, lo muestra.
+    
     }
 
     
